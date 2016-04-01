@@ -1,0 +1,26 @@
+{
+  "name": "hexo-generator-json-feed",
+  "version": "0.0.1",
+  "description": "Hexo plugin to generate a JSON file similar to RSS feed structure with posts contents for generic use or consumption",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexbruno/hexo-generator-json-feed.git"
+  },
+  "keywords": [
+    "hexo",
+    "generator",
+    "json",
+    "feed",
+    "rss"
+  ],
+  "author": "Alex Bruno Cáceres <webmaster@alexbruno.net.br>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexbruno/hexo-generator-json-feed/issues"
+  },
+  "homepage": "https://github.com/alexbruno/hexo-generator-json-feed#readme"
+}
