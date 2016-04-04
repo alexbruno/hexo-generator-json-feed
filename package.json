@@ -22,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/alexbruno/hexo-generator-json-feed/issues"
   },
-  "homepage": "https://github.com/alexbruno/hexo-generator-json-feed#readme",
-  "dependencies": {
-    "striptags": "latest"
-  }
+  "homepage": "https://github.com/alexbruno/hexo-generator-json-feed#readme"
 }
