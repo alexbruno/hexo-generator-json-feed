@@ -14,7 +14,7 @@ function hexo_generator_json_feed(site) {
     }).slice(0, cfg.limit || 25).map(function (post) {
       return {
         title: post.title,
-        link: post.link,
+        link: post.permalink,
 				description: post.excerpt ? minify(post.excerpt) : minify(post.content),
 				pubDate: post.date.toDate().toUTCString(),
 				guid: post.permalink,
