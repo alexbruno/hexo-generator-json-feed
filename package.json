@@ -1,6 +1,6 @@
 {
   "name": "hexo-generator-json-feed",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Hexo plugin to generate a JSON file similar to RSS feed structure with posts contents for generic use or consumption",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "url": "https://github.com/alexbruno/hexo-generator-json-feed/issues"
   },
   "homepage": "https://github.com/alexbruno/hexo-generator-json-feed#readme",
-	"dependencies": {
-		"striptags": "latest"
-	}
+  "dependencies": {
+    "striptags": "latest"
+  }
 }
