@@ -1,14 +1,12 @@
+var strip = require('striptags');
+
 hexo.extend.generator.register('json-feed', hexo_generator_json_feed);
 
 function hexo_generator_json_feed(site) {
 	var cfg = hexo.config.hasOwnProperty('jsonFeed') ? hexo.config.jsonFeed : {},
 
-		stripe = function (str) {
-			return str.replace(/(<([^>]+)>)/g, '');
-		},
-
 		minify = function (str) {
-			return stripe(str).trim().replace(/\n/g, ' ').replace(/\s+/g, ' ');
+			return strip(str).trim().replace(/\n/g, ' ').replace(/\s+/g, ' ');
 		},
 
 		posts = site.posts.sort('-date').filter(function (post) {
