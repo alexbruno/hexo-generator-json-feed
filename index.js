@@ -1,10 +1,12 @@
+var util = require('http-util');
+
 hexo.extend.generator.register('json-feed', hexo_generator_json_feed);
 
 function hexo_generator_json_feed(site) {
 	var cfg = hexo.config.hasOwnProperty('jsonFeed') ? hexo.config.jsonFeed : {},
 
 		minify = function (str) {
-			return hexo.util.stripHTML(str).trim().replace(/\n/g, ' ').replace(/\s+/g, ' ');
+			return util.stripHTML(str).trim().replace(/\n/g, ' ').replace(/\s+/g, ' ');
 		},
 
 		posts = site.posts.sort('-date').filter(function (post) {
