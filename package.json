@@ -1,6 +1,6 @@
 {
   "name": "hexo-generator-json-feed",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Hexo plugin to generate a JSON file similar to RSS feed structure with posts contents for generic use or consumption",
   "main": "index.js",
   "scripts": {
