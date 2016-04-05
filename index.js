@@ -1,4 +1,4 @@
-var util = require('http-util');
+var util = require('hexo-util');
 
 hexo.extend.generator.register('json-feed', hexo_generator_json_feed);
 
