@@ -1,5 +1,5 @@
 # hexo-generator-json-feed
-Hexo (https://hexo.io/) plugin to generate a JSON file similar to RSS feed channel structure with posts contents for generic use or consumption
+Hexo (https://hexo.io/) plugin to generate a JSON file similar to RSS feed channel structure with posts contents for generic use or consumption.
 
 It's useful to serve compact and agile content data for microservices like AJAX site search, Twitter typeahead or public API.
 
@@ -22,8 +22,8 @@ Using the default settings, the `content.json` file looks like the following str
 	description: hexo.config.description,
 	language: hexo.config.language,
 	link: hexo.config.url,
-	pubDate: // Last published post pubdate,
-	lastBuildDate: // JSON file build date,
+	pubDate: , // Last published post pubdate, UTC format, RSS pattern
+	lastBuildDate: , // JSON file build datetime, UTC format, RSS pattern
 	generator: 'hexo-generator-json-feed',
 	webMaster: hexo.config.author,
 	items: [
@@ -31,7 +31,7 @@ Using the default settings, the `content.json` file looks like the following str
 			title: post.title,
 			link: post.permalink,
 			description: post.excerpt ? post.excerpt : post.content, // only text minified ;)
-			pubDate: post.date, // UTC format, like RSS pattern
+			pubDate: post.date, // UTC format, RSS pattern
 			guid: post.permalink,
 			category: post.categories.length ? post.categories : post.tags // Strings Array
 		}
