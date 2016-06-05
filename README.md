@@ -45,7 +45,7 @@ Using the default settings, the `content.json` file looks like the following str
 
 You can set some options in `_config.yml` to generate a custom `content.json`.
 
-For now, only `limit` option is available.
+*For now, only `limit` option is available.*
 
 Default options are as follows:
 
