@@ -1,8 +1,9 @@
 import { has, specs } from './modules/utils'
 
 const { config } = hexo
-
-const options = has(config, 'jsonFeed') ? config.jsonFeed : { spec: 'rss' }
+const defs = { spec: 'rss', limit: 25 }
+const opts = has(config, 'jsonFeed') ? config.jsonFeed : {}
+const options = { ...defs, ...opts }
 const file = options.spec === 'rss' ? 'rss' : 'feed'
 
 hexo.extend.generator.register('json-feed', site => {
