@@ -2,7 +2,7 @@ import { has, specs } from './modules/utils'
 
 const { config } = hexo
 
-const options = has(config, 'jsonFeed') ? config.jsonFeed : { spec: 'feed' }
+const options = has(config, 'jsonFeed') ? config.jsonFeed : { spec: 'rss' }
 const file = options.spec === 'rss' ? 'rss' : 'feed'
 
 hexo.extend.generator.register('json-feed', site => {

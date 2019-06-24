@@ -24,10 +24,10 @@ export const specs = {
       description: config.description,
       language: config.language,
       link: config.url,
+      webMaster: config.author,
       pubDate: posts.length ? posts[0].pubDate : build,
       lastBuildDate: build,
       generator: 'hexo-generator-json-feed',
-      webMaster: config.author,
       items
     }
 
@@ -43,7 +43,7 @@ export const specs = {
         content_html: post.content,
         content_text: minify(post.content),
         summary: summary(post),
-        date_published: post.date.toDate().toUTCString(),
+        date_published: post.date.toDate().toJSON(),
         tags: tags(post)
       }
     })
