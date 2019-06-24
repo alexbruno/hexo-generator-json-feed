@@ -1,9 +1,5 @@
 import { stripHTML } from 'hexo-util'
 
-export function has (obj, key) {
-  return Object.prototype.hasOwnProperty.call(obj, key)
-}
-
 export const specs = {
   rss (site, limit, config) {
     const build = new Date().toUTCString()

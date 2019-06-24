@@ -1,8 +1,8 @@
-import { has, specs } from './modules/utils'
+import { specs } from './modules/utils'
 
 const { config } = hexo
 const defs = { spec: 'rss', limit: 25 }
-const opts = has(config, 'jsonFeed') ? config.jsonFeed : {}
+const opts = config.jsonFeed || {}
 const options = { ...defs, ...opts }
 const file = options.spec === 'rss' ? 'rss' : 'feed'
 
