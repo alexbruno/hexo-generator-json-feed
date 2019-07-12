@@ -21,7 +21,7 @@ export const specs = {
       language: config.language,
       link: config.url,
       webMaster: config.author,
-      pubDate: posts.length ? posts[0].pubDate : build,
+      pubDate: items.length ? items[0].pubDate : build,
       lastBuildDate: build,
       generator: 'hexo-generator-json-feed',
       items
