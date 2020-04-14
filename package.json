@@ -1,9 +1,8 @@
 {
   "name": "hexo-generator-json-feed",
   "version": "2.0.3",
-  "description": "",
+  "description": "A JSON Feed/RSS generator for Hexo",
   "scripts": {
-    "test": "echo 'Error: no test specified' && exit 1",
     "clean": "shx rm -rf dist",
     "major": "npm version major && npm run push",
     "minor": "npm version minor && npm run push",
@@ -12,7 +11,6 @@
     "push": "git push && git push --tags",
     "lint": "prettier ./src/*.js ./src/**/*.js --write",
     "dist": "run-s dist:*",
-    "dist:lint": "npm run lint",
     "dist:clean": "npm run clean",
     "dist:build": "rollup -c"
   },
