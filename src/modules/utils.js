@@ -1,17 +1,17 @@
 import { stripHTML } from 'hexo-util'
 
 export const specs = {
-  rss (site, limit, config) {
+  rss(site, limit, config) {
     const build = new Date().toUTCString()
 
-    const items = posts(site, limit).map(post => {
+    const items = posts(site, limit).map((post) => {
       return {
         title: post.title,
         link: post.permalink,
         description: summary(post),
         pubDate: post.date.toDate().toUTCString(),
         guid: post.permalink,
-        category: tags(post)
+        category: tags(post),
       }
     })
 
@@ -24,14 +24,14 @@ export const specs = {
       pubDate: items.length ? items[0].pubDate : build,
       lastBuildDate: build,
       generator: 'hexo-generator-json-feed',
-      items
+      items,
     }
 
     return rss
   },
 
-  feed (site, limit, config) {
-    const items = posts(site, limit).map(post => {
+  feed(site, limit, config) {
+    const items = posts(site, limit).map((post) => {
       return {
         id: post.permalink,
         url: post.permalink,
@@ -40,7 +40,7 @@ export const specs = {
         content_text: minify(post.content),
         summary: summary(post),
         date_published: post.date.toDate().toJSON(),
-        tags: tags(post)
+        tags: tags(post),
       }
     })
 
@@ -50,32 +50,35 @@ export const specs = {
       home_page_url: config.url,
       feed_url: `${config.url}/feed.json`,
       author: {
-        name: config.author
+        name: config.author,
       },
-      items
+      items,
     }
 
     return json
-  }
+  },
 }
 
 // Helpers
 
-function minify (str) {
+function minify(str) {
   return stripHTML(str).trim().replace(/\s+/g, ' ')
 }
 
-function posts (site, limit) {
-  return site.posts.sort('-date').filter(post => post.published).slice(0, limit || 25)
+function posts(site, limit) {
+  return site.posts
+    .sort('-date')
+    .filter((post) => post.published)
+    .slice(0, limit || 25)
 }
 
-function summary (post) {
+function summary(post) {
   return post.excerpt ? minify(post.excerpt) : minify(post.content)
 }
 
-function tags (post) {
-  const cats = post.categories.map(cat => cat.name)
-  const tags = post.tags.map(tag => tag.name)
+function tags(post) {
+  const cats = post.categories.map((cat) => cat.name)
+  const tags = post.tags.map((tag) => tag.name)
 
   return [...cats, ...tags]
 }

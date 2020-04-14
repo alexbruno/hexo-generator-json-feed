@@ -6,11 +6,11 @@ const opts = config.jsonFeed || {}
 const options = { ...defs, ...opts }
 const file = options.spec === 'rss' ? 'rss' : 'feed'
 
-hexo.extend.generator.register('json-feed', site => {
+hexo.extend.generator.register('json-feed', (site) => {
   const json = specs[options.spec](site, options.limit, config)
 
   return {
     path: `${file}.json`,
-    data: JSON.stringify(json)
+    data: JSON.stringify(json),
   }
 })
