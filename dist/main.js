@@ -1,8 +1,10 @@
-import { stripHTML } from 'hexo-util'
+'use strict';
 
-export const specs = {
+var hexoUtil = require('hexo-util');
+
+const specs = {
   rss (site, limit, config) {
-    const build = new Date().toUTCString()
+    const build = new Date().toUTCString();
 
     const items = posts(site, limit).map(post => {
       return {
@@ -13,7 +15,7 @@ export const specs = {
         guid: post.permalink,
         category: tags(post)
       }
-    })
+    });
 
     const rss = {
       title: config.title,
@@ -25,7 +27,7 @@ export const specs = {
       lastBuildDate: build,
       generator: 'hexo-generator-json-feed',
       items
-    }
+    };
 
     return rss
   },
@@ -42,7 +44,7 @@ export const specs = {
         date_published: post.date.toDate().toJSON(),
         tags: tags(post)
       }
-    })
+    });
 
     const json = {
       version: 'https://jsonfeed.org/version/1',
@@ -53,16 +55,16 @@ export const specs = {
         name: config.author
       },
       items
-    }
+    };
 
     return json
   }
-}
+};
 
 // Helpers
 
 function minify (str) {
-  return stripHTML(str).trim().replace(/\s+/g, ' ')
+  return hexoUtil.stripHTML(str).trim().replace(/\s+/g, ' ')
 }
 
 function posts (site, limit) {
@@ -74,8 +76,23 @@ function summary (post) {
 }
 
 function tags (post) {
-  const cats = post.categories.map(cat => cat.name)
-  const tags = post.tags.map(tag => tag.name)
+  const cats = post.categories.map(cat => cat.name);
+  const tags = post.tags.map(tag => tag.name);
 
   return [...cats, ...tags]
 }
+
+const { config } = hexo;
+const defs = { spec: 'rss', limit: 25 };
+const opts = config.jsonFeed || {};
+const options = { ...defs, ...opts };
+const file = options.spec === 'rss' ? 'rss' : 'feed';
+
+hexo.extend.generator.register('json-feed', site => {
+  const json = specs[options.spec](site, options.limit, config);
+
+  return {
+    path: `${file}.json`,
+    data: JSON.stringify(json)
+  }
+});
